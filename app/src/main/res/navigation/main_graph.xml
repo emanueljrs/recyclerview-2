@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/listFragment">
+
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.emanuel.recyclerview2.fragments.ListFragment"
+        android:label="List Persons"
+        tools:layout="@layout/fragment_list">
+        <action
+            android:id="@+id/from_listFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/from_listFragment_to_addPersonFragment"
+            app:destination="@id/addPersonFragment" />
+        <argument
+            android:name="person"
+            app:argType="com.emanuel.recyclerview2.models.Person"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.emanuel.recyclerview2.fragments.DetailsFragment"
+        android:label="Details Person"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="itemPerson"
+            app:argType="com.emanuel.recyclerview2.models.Person" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPersonFragment"
+        android:name="com.emanuel.recyclerview2.fragments.AddPersonFragment"
+        android:label="Add Person"
+        tools:layout="@layout/fragment_add_person">
+        <action
+            android:id="@+id/from_addPersonFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+</navigation>
